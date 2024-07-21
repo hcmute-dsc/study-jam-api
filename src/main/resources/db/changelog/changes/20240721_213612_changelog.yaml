@@ -1,0 +1,112 @@
+databaseChangeLog:
+- changeSet:
+    id: 1721572589192-1
+    author: quanvo (generated)
+    changes:
+    - createTable:
+        columns:
+        - column:
+            constraints:
+              nullable: false
+              primaryKey: true
+              primaryKeyName: eventsPK
+            name: id
+            type: UUID
+        - column:
+            constraints:
+              nullable: false
+            name: description
+            type: TEXT
+        - column:
+            constraints:
+              nullable: false
+            name: end_time
+            type: TIMESTAMP(6) WITHOUT TIME ZONE
+        - column:
+            constraints:
+              nullable: false
+            name: start_time
+            type: TIMESTAMP(6) WITHOUT TIME ZONE
+        - column:
+            constraints:
+              nullable: false
+            name: title
+            type: VARCHAR(255)
+        tableName: events
+    rollback:
+    - dropTable:
+        tableName: events
+- changeSet:
+    id: 1721572589192-2
+    author: quanvo (generated)
+    changes:
+    - createTable:
+        columns:
+        - column:
+            constraints:
+              nullable: false
+              primaryKey: true
+              primaryKeyName: usersPK
+            name: id
+            type: UUID
+        - column:
+            constraints:
+              nullable: false
+            name: email
+            type: VARCHAR(255)
+        - column:
+            constraints:
+              nullable: false
+            name: full_name
+            type: VARCHAR(255)
+        - column:
+            constraints:
+              nullable: false
+            name: is_enabled
+            type: BOOLEAN
+        - column:
+            constraints:
+              nullable: false
+            name: password
+            type: VARCHAR(255)
+        - column:
+            constraints:
+              nullable: false
+            name: role
+            type: VARCHAR(255)
+        - column:
+            name: event_id
+            type: UUID
+        tableName: users
+    rollback:
+    - dropTable:
+        tableName: users
+- changeSet:
+    id: 1721572589192-3
+    author: quanvo (generated)
+    changes:
+    - addUniqueConstraint:
+        columnNames: email
+        constraintName: UC_USERSEMAIL_COL
+        tableName: users
+    rollback:
+    - dropUniqueConstraint:
+        constraintName: UC_USERSEMAIL_COL
+        tableName: users
+- changeSet:
+    id: 1721572589192-4
+    author: quanvo (generated)
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: event_id
+        baseTableName: users
+        constraintName: FK1psuuwpuxnf8wb4jp6pah4gie
+        deferrable: false
+        initiallyDeferred: false
+        referencedColumnNames: id
+        referencedTableName: events
+        validate: true
+    rollback:
+    - dropForeignKeyConstraint:
+        baseTableName: users
+        constraintName: FK1psuuwpuxnf8wb4jp6pah4gie
