@@ -20,18 +20,18 @@ public class JwtUtils {
   }
 
   public static String generateToken(Map<String, Object> extraClaims, UserDetails userDetails) {
-    return Jwts
-            .builder()
-            .claims(extraClaims)
-            .subject(userDetails.getUsername())
-            .issuedAt(new Date(System.currentTimeMillis()))
-            .expiration(new Date(System.currentTimeMillis() + Constants.EXPIRATION_TIME))
-            .signWith(getSigningKey())
-            .compact();
+    return Jwts.builder()
+        .claims(extraClaims)
+        .subject(userDetails.getUsername())
+        .issuedAt(new Date(System.currentTimeMillis()))
+        .expiration(new Date(System.currentTimeMillis() + Constants.EXPIRATION_TIME))
+        .signWith(getSigningKey())
+        .compact();
   }
 
   private static SecretKey getSigningKey() {
-    String jwtSigningSecret = System.getenv().getOrDefault("JWT_SIGNING_KEY", Constants.DEFAULT_SECRET_KEY);
+    String jwtSigningSecret =
+        System.getenv().getOrDefault("JWT_SIGNING_KEY", Constants.DEFAULT_SECRET_KEY);
     byte[] keyBytes = Decoders.BASE64.decode(jwtSigningSecret);
     return Keys.hmacShaKeyFor(keyBytes);
   }
@@ -53,7 +53,7 @@ public class JwtUtils {
     return extractClaim(token, Claims::getExpiration);
   }
 
-  private static  <R> R extractClaim(String token, Function<Claims, R> claimsResolver) {
+  private static <R> R extractClaim(String token, Function<Claims, R> claimsResolver) {
     Claims claims = extractAllClaims(token);
     return claimsResolver.apply(claims);
   }

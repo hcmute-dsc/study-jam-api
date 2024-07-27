@@ -24,22 +24,28 @@ public class SecurityConfig {
   private final JwtAuthenticationFilter jwtAuthenticationFilter;
 
   private static final String[] AUTH_WHITELIST = {
-          "/auth/**",
+    "/auth/**",
   };
 
   @Bean
   public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-    return http
-            .authorizeHttpRequests(request -> request
-                    .requestMatchers(AUTH_WHITELIST).permitAll()
-                    .requestMatchers(antMatcher(HttpMethod.POST, "/users")).hasAuthority(SUPER_ADMIN.name())
-                    .requestMatchers("/users/current").authenticated()
-                    .requestMatchers("/users/**").hasAnyAuthority(SUPER_ADMIN.name(), ADMIN.name())
-                    .anyRequest().authenticated())
-            .httpBasic(Customizer.withDefaults())
-            .csrf(AbstractHttpConfigurer::disable)
-            .authenticationProvider(authenticationProvider)
-            .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class)
-            .build();
+    return http.authorizeHttpRequests(
+            request ->
+                request
+                    .requestMatchers(AUTH_WHITELIST)
+                    .permitAll()
+                    .requestMatchers(antMatcher(HttpMethod.POST, "/users"))
+                    .hasAuthority(SUPER_ADMIN.name())
+                    .requestMatchers("/users/current")
+                    .authenticated()
+                    .requestMatchers("/users/**")
+                    .hasAnyAuthority(SUPER_ADMIN.name(), ADMIN.name())
+                    .anyRequest()
+                    .authenticated())
+        .httpBasic(Customizer.withDefaults())
+        .csrf(AbstractHttpConfigurer::disable)
+        .authenticationProvider(authenticationProvider)
+        .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class)
+        .build();
   }
 }

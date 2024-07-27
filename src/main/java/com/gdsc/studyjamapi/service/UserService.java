@@ -32,7 +32,8 @@ public class UserService {
       throw new EmailAlreadyExistsException(EMAIL_ALREADY_EXISTS);
     }
 
-    User newUserRequest = User.builder()
+    User newUserRequest =
+        User.builder()
             .fullName(request.getFullName())
             .email(request.getEmail())
             .password(passwordEncoder.encode(request.getPassword()))
@@ -50,7 +51,9 @@ public class UserService {
   }
 
   public UserResponse getUserById(String userId) {
-    User user = userRepository.findById(UUID.fromString(userId))
+    User user =
+        userRepository
+            .findById(UUID.fromString(userId))
             .orElseThrow(() -> new NotFoundException(NOT_FOUND_MESSAGE_TEMPLATE.formatted("User")));
     return UserMapper.INSTANCE.userToUserResponse(user);
   }

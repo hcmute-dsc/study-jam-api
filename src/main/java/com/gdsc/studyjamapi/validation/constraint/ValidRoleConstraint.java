@@ -11,6 +11,8 @@ import java.lang.annotation.RetentionPolicy;
 @Retention(RetentionPolicy.RUNTIME)
 public @interface ValidRoleConstraint {
   String message() default "The provided role is invalid.";
+
   Class<?>[] groups() default {};
+
   Class<? extends Payload>[] payload() default {};
 }

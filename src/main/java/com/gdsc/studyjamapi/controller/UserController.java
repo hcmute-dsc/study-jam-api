@@ -18,12 +18,10 @@ public class UserController implements UserApi {
   private final UserService userService;
 
   @Override
-  public ResponseEntity<UserResponse> createUser(CreateUserRequest request, UriComponentsBuilder ucb) {
+  public ResponseEntity<UserResponse> createUser(
+      CreateUserRequest request, UriComponentsBuilder ucb) {
     UserResponse newUser = userService.createUser(request);
-    URI locationOfNewUser = ucb
-            .path("/users/{id}")
-            .buildAndExpand(newUser.getId())
-            .toUri();
+    URI locationOfNewUser = ucb.path("/users/{id}").buildAndExpand(newUser.getId()).toUri();
     return ResponseEntity.created(locationOfNewUser).build();
   }
 

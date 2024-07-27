@@ -12,7 +12,8 @@ import java.util.List;
 @RequestMapping("/users")
 public interface UserApi {
   @PostMapping
-  ResponseEntity<UserResponse> createUser(@RequestBody @Valid CreateUserRequest request, UriComponentsBuilder ucb);
+  ResponseEntity<UserResponse> createUser(
+      @RequestBody @Valid CreateUserRequest request, UriComponentsBuilder ucb);
 
   @GetMapping
   ResponseEntity<List<UserResponse>> getAllUsers();
