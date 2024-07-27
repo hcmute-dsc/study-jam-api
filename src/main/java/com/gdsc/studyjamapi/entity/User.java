@@ -2,10 +2,8 @@ package com.gdsc.studyjamapi.entity;
 
 import com.gdsc.studyjamapi.common.Role;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
+import lombok.experimental.SuperBuilder;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -15,12 +13,13 @@ import java.util.List;
 import java.util.UUID;
 
 @Data
-@Builder
+@SuperBuilder
 @AllArgsConstructor
 @NoArgsConstructor
+@EqualsAndHashCode(callSuper = true)
 @Entity
 @Table(name = "users")
-public class User implements UserDetails {
+public class User extends BaseEntity implements UserDetails {
   @Id
   @GeneratedValue(strategy = GenerationType.UUID)
   private UUID id;
@@ -38,7 +37,7 @@ public class User implements UserDetails {
   @Enumerated(EnumType.STRING)
   private Role role;
 
-  private boolean isEnabled = true;
+  private Boolean isEnabled = true;
 
   @ManyToOne
   @JoinColumn(name = "event_id")

@@ -1,0 +1,57 @@
+databaseChangeLog:
+- changeSet:
+    id: 1722054033791-1
+    author: quanvo (generated)
+    changes:
+    - addColumn:
+        columns:
+        - column:
+            name: created_at
+            type: timestamp(6)
+        tableName: events
+    rollback:
+    - dropColumn:
+        columnName: created_at
+        tableName: events
+- changeSet:
+    id: 1722054033791-2
+    author: quanvo (generated)
+    changes:
+    - addColumn:
+        columns:
+        - column:
+            name: created_at
+            type: timestamp(6)
+        tableName: users
+    rollback:
+    - dropColumn:
+        columnName: created_at
+        tableName: users
+- changeSet:
+    id: 1722054033791-3
+    author: quanvo (generated)
+    changes:
+    - addColumn:
+        columns:
+        - column:
+            name: updated_at
+            type: timestamp(6)
+        tableName: events
+    rollback:
+    - dropColumn:
+        columnName: updated_at
+        tableName: events
+- changeSet:
+    id: 1722054033791-4
+    author: quanvo (generated)
+    changes:
+    - addColumn:
+        columns:
+        - column:
+            name: updated_at
+            type: timestamp(6)
+        tableName: users
+    rollback:
+    - dropColumn:
+        columnName: updated_at
+        tableName: users
