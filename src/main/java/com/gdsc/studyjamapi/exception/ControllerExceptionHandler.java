@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.lang.NonNull;
+import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -42,6 +43,14 @@ public class ControllerExceptionHandler extends ResponseEntityExceptionHandler {
   })
   public ResponseEntity<ErrorResponse> badRequestException(Exception exception) {
     return new ResponseEntity<>(new ErrorResponse(exception.getMessage()), HttpStatus.BAD_REQUEST);
+  }
+
+  @ResponseStatus(HttpStatus.UNAUTHORIZED)
+  @ExceptionHandler({
+    BadCredentialsException.class,
+  })
+  public ResponseEntity<ErrorResponse> unauthorizedException(Exception exception) {
+    return new ResponseEntity<>(new ErrorResponse(exception.getMessage()), HttpStatus.UNAUTHORIZED);
   }
 
   @ResponseStatus(HttpStatus.NOT_FOUND)
