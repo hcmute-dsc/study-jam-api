@@ -11,4 +11,4 @@ db-rollback:
     	  echo "Error: 'count' is not defined. Usage: make db-rollback count=<number>"; \
     	  exit 1; \
     fi
-	mvn liquibase:rollback -Dliquibase.rollbackCount=$(count)
+	mvn clean install liquibase:rollback -DskipTests=true -Dliquibase.rollbackCount=$(count)

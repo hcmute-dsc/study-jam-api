@@ -1,22 +1,21 @@
 package com.gdsc.studyjamapi.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
+import lombok.experimental.SuperBuilder;
 
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.UUID;
 
 @Data
-@Builder
+@SuperBuilder
 @AllArgsConstructor
 @NoArgsConstructor
+@EqualsAndHashCode(callSuper = true)
 @Entity
 @Table(name = "events")
-public class Event {
+public class Event extends BaseEntity {
   @Id
   @GeneratedValue(strategy = GenerationType.UUID)
   private UUID id;
