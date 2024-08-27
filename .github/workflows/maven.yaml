@@ -5,8 +5,6 @@ name: Java CI with Maven
 
 on:
   pull_request:
-  push:
-    branches: [main]
 
 jobs:
   # Label of the runner job

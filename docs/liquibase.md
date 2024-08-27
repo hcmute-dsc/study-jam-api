@@ -1,4 +1,4 @@
-# HOW TO SET UP LIQUIBASE AND RUN DATABASE MIGRATION
+# How to set up Liquibase and run Database Migration
 
 ## 1. About Liquibase
 Getting started with Liquibase by refer to its official documentation [here](https://docs.liquibase.com/start/home.html).
