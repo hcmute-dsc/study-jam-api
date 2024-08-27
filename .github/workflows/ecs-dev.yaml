@@ -12,8 +12,7 @@ name: Deploy to Amazon ECS
 on:
   push:
     branches:
-      # TODO: for testing only, need to update to the main branch
-      - feat/deploy
+      - main
 
 env:
   AWS_REGION: ap-southeast-1
