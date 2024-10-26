@@ -4,13 +4,12 @@ import com.gdsc.studyjamapi.api.UserApi;
 import com.gdsc.studyjamapi.dto.request.CreateUserRequest;
 import com.gdsc.studyjamapi.dto.response.UserResponse;
 import com.gdsc.studyjamapi.service.UserService;
+import java.net.URI;
+import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponentsBuilder;
-
-import java.net.URI;
-import java.util.List;
 
 @RestController
 @RequiredArgsConstructor

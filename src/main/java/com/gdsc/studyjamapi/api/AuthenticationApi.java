@@ -18,26 +18,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/auth")
 @Tag(name = "Authentication")
 public interface AuthenticationApi {
-  @Operation(summary = "Authenticate a user.")
-  @ApiResponses(
-      value = {
-        @ApiResponse(
-            responseCode = "200",
-            description = "Authenticated successfully",
-            content = {
-              @Content(
-                  mediaType = "application/json",
-                  schema = @Schema(implementation = SignInResponse.class))
+    @Operation(summary = "Authenticate a user.")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Authenticated successfully", content = {
+                    @Content(mediaType = "application/json", schema = @Schema(implementation = SignInResponse.class))
             }),
-        @ApiResponse(
-            responseCode = "401",
-            description = "Bad credentials",
-            content = {
-              @Content(
-                  mediaType = "application/json",
-                  schema = @Schema(implementation = ErrorResponse.class))
+            @ApiResponse(responseCode = "401", description = "Bad credentials", content = {
+                    @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorResponse.class))
             })
-      })
-  @PostMapping("/sign-in")
-  ResponseEntity<SignInResponse> signIn(@RequestBody @Valid SignInRequest request);
+    })
+    @PostMapping("/sign-in")
+    ResponseEntity<SignInResponse> signIn(@RequestBody @Valid SignInRequest request);
 }

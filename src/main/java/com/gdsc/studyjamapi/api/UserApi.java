@@ -73,7 +73,7 @@ public interface UserApi {
                 @Content(
                     mediaType = "application/json",
                     schema = @Schema(implementation = ErrorResponse.class)))
-      })
+    })
   @GetMapping("/{userId}")
   ResponseEntity<UserResponse> getUserById(
       @Parameter(description = "ID of the user to get") @PathVariable String userId);
