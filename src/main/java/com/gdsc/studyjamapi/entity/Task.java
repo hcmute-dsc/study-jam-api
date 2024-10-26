@@ -26,6 +26,7 @@ public class Task extends BaseEntity {
   @Column(columnDefinition = "TEXT", nullable = false)
   private String requirement; // Yeu cau ........
 
+  @Column(columnDefinition = "TEXT")
   private String note; // ghi chu
 
   @Column(columnDefinition = "TEXT", nullable = false)
