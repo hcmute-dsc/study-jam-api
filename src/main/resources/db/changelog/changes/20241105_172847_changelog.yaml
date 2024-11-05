@@ -1,0 +1,50 @@
+databaseChangeLog:
+- changeSet:
+    id: 1730802554803-1
+    author: ANH KIET (generated)
+    changes:
+    - createTable:
+        columns:
+        - column:
+            constraints:
+              nullable: false
+              primaryKey: true
+              primaryKeyName: tasksPK
+            name: id
+            type: UUID
+        - column:
+            name: created_at
+            type: TIMESTAMP(6) WITHOUT TIME ZONE
+        - column:
+            name: updated_at
+            type: TIMESTAMP(6) WITHOUT TIME ZONE
+        - column:
+            constraints:
+              nullable: false
+            name: description
+            type: TEXT
+        - column:
+            constraints:
+              nullable: false
+            name: event_id
+            type: VARCHAR(255)
+        - column:
+            name: note
+            type: TEXT
+        - column:
+            constraints:
+              nullable: false
+            name: requirement
+            type: TEXT
+        - column:
+            constraints:
+              nullable: false
+            name: submission
+            type: TEXT
+        - column:
+            constraints:
+              nullable: false
+            name: title
+            type: VARCHAR(255)
+        tableName: tasks
+
