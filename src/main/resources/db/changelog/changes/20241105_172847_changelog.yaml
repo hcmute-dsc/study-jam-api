@@ -47,4 +47,6 @@ databaseChangeLog:
             name: title
             type: VARCHAR(255)
         tableName: tasks
-
+    rollback:
+        - dropTable:
+              tableName: tasks

@@ -18,7 +18,7 @@ public class TaskController implements TaskApi {
     @Override
     public ResponseEntity<TaskResponse> createTask(
             CreateTaskRequest request, UriComponentsBuilder ucb) {
-        TaskResponse taskResponse = taskService.creatTask(request);
+        TaskResponse taskResponse = taskService.createTask(request);
         URI locationOfNewTask = ucb.path("/tasks/{id}").buildAndExpand(taskResponse.getId()).toUri();
         return ResponseEntity.created(locationOfNewTask).build();
     }

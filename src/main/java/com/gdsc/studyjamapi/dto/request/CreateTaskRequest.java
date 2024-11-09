@@ -25,5 +25,6 @@ public class CreateTaskRequest {
 
     private String note;
     private String submission;
+    @NotBlank(message = REQUIRED_TITLE)
     private String eventId;
 }

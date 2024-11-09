@@ -12,12 +12,12 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
-import static com.gdsc.studyjamapi.common.Constants.ErrorMessage.EVENT_NOT_FOUND;
 
 
 import java.util.UUID;
 
 
+import static com.gdsc.studyjamapi.common.Constants.ErrorMessage.NOT_FOUND_MESSAGE_TEMPLATE;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.when;
 
@@ -61,10 +61,10 @@ public class TaskServiceTests {
                         .eventId(newTaskRequest.getEventId())
                         .build();
 
-        when(eventService.isEventExist(request.getEventId())).thenReturn(true);
+        when(eventService.doesEventExist(request.getEventId())).thenReturn(true);
         when(taskRepository.save(newTaskRequest)).thenReturn(expectedTask);
 
-        TaskResponse actualResponse = taskService.creatTask(request);
+        TaskResponse actualResponse = taskService.createTask(request);
 
         assertNotNull(actualResponse);
         assertEquals(expectedTask.getId(), actualResponse.getId());
@@ -86,9 +86,9 @@ public class TaskServiceTests {
                         .submission("Task Submission")
                         .eventId("456")
                         .build();
-        when(eventService.isEventExist(request.getEventId())).thenReturn(false);
+        when(eventService.doesEventExist(request.getEventId())).thenReturn(false);
         RemoteEntityDoesNotExist exception =
-                assertThrows(RemoteEntityDoesNotExist.class, () -> taskService.creatTask(request));
-        assertEquals(exception.getMessage(), EVENT_NOT_FOUND);
+                assertThrows(RemoteEntityDoesNotExist.class, () -> taskService.createTask(request));
+        assertEquals(exception.getMessage(), String.format(NOT_FOUND_MESSAGE_TEMPLATE, "Event"));
     }
 }

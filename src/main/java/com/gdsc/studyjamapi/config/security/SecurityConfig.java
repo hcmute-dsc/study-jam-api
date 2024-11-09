@@ -22,7 +22,7 @@ import static org.springframework.security.web.util.matcher.AntPathRequestMatche
 public class SecurityConfig {
   private final AuthenticationProvider authenticationProvider;
   private final JwtAuthenticationFilter jwtAuthenticationFilter;
-
+  // TODO: this while_list is incomplete
   private static final String[] AUTH_WHITELIST = {
     "/api-docs/**", "/auth/**","/tasks/**"
   };

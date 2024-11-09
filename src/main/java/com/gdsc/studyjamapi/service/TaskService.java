@@ -1,6 +1,6 @@
 package com.gdsc.studyjamapi.service;
 
-import static com.gdsc.studyjamapi.common.Constants.ErrorMessage.EVENT_NOT_FOUND;
+import static com.gdsc.studyjamapi.common.Constants.ErrorMessage.NOT_FOUND_MESSAGE_TEMPLATE;
 
 import com.gdsc.studyjamapi.dto.request.CreateTaskRequest;
 import com.gdsc.studyjamapi.dto.response.TaskResponse;
@@ -19,9 +19,9 @@ import org.springframework.stereotype.Service;
 public class TaskService {
     private final TaskRepository taskRepository;
     private final EventService eventService;
-    public TaskResponse creatTask(CreateTaskRequest request) {
-        if (!this.eventService.isEventExist(request.getEventId())) {
-            throw new RemoteEntityDoesNotExist(EVENT_NOT_FOUND);
+    public TaskResponse createTask(CreateTaskRequest request) {
+        if (!this.eventService.doesEventExist(request.getEventId())) {
+            throw new RemoteEntityDoesNotExist(String.format(NOT_FOUND_MESSAGE_TEMPLATE, "Event"));
         }
         Task newTaskRequest =
                 Task.builder()

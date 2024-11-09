@@ -22,6 +22,5 @@ public class Constants {
     public static final String REQUIRED_TITLE = "The title is required.";
     public static final String REQUIRED_DESCRIPTION = "The task description is required.";
     public static final String REQUIRED_REQUIREMENT = "The task requirement is required.";
-    public static final String EVENT_NOT_FOUND = "Event not found.";
   }
 }
