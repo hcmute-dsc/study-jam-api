@@ -1,0 +1,64 @@
+databaseChangeLog:
+- changeSet:
+    id: 1735302223646-1
+    author: ANH KIET (generated)
+    changes:
+    - createTable:
+        columns:
+        - column:
+            constraints:
+              nullable: false
+            name: task_id
+            type: UUID
+        - column:
+            name: requirement
+            type: VARCHAR(255)
+        tableName: task_requirements
+- changeSet:
+    id: 1735302223646-2
+    author: ANH KIET (generated)
+    changes:
+    - createTable:
+        columns:
+        - column:
+            constraints:
+              nullable: false
+              primaryKey: true
+              primaryKeyName: tasksPK
+            name: id
+            type: UUID
+        - column:
+            constraints:
+              nullable: false
+            name: deadline
+            type: TIMESTAMP(6) WITHOUT TIME ZONE
+        - column:
+            constraints:
+              nullable: false
+            name: description
+            type: TEXT
+        - column:
+            constraints:
+              nullable: false
+            name: event_id
+            type: VARCHAR(255)
+        - column:
+            constraints:
+              nullable: false
+            name: title
+            type: VARCHAR(255)
+        tableName: tasks
+- changeSet:
+    id: 1735302223646-3
+    author: ANH KIET (generated)
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: task_id
+        baseTableName: task_requirements
+        constraintName: FKimgbvsrib8qwlb2pjcn8ujg3r
+        deferrable: false
+        initiallyDeferred: false
+        referencedColumnNames: id
+        referencedTableName: tasks
+        validate: true
+
