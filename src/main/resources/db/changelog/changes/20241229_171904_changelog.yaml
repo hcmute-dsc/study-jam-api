@@ -1,6 +1,6 @@
 databaseChangeLog:
 - changeSet:
-    id: 1735302223646-1
+    id: 1735467575150-1
     author: ANH KIET (generated)
     changes:
     - createTable:
@@ -14,8 +14,11 @@ databaseChangeLog:
             name: requirement
             type: VARCHAR(255)
         tableName: task_requirements
+    rollback:
+        - dropTable:
+              tableName: task_requirements
 - changeSet:
-    id: 1735302223646-2
+    id: 1735467575150-2
     author: ANH KIET (generated)
     changes:
     - createTable:
@@ -27,6 +30,12 @@ databaseChangeLog:
               primaryKeyName: tasksPK
             name: id
             type: UUID
+        - column:
+            name: created_at
+            type: TIMESTAMP(6) WITHOUT TIME ZONE
+        - column:
+            name: updated_at
+            type: TIMESTAMP(6) WITHOUT TIME ZONE
         - column:
             constraints:
               nullable: false
@@ -48,8 +57,11 @@ databaseChangeLog:
             name: title
             type: VARCHAR(255)
         tableName: tasks
+    rollback:
+        - dropTable:
+              tableName: tasks
 - changeSet:
-    id: 1735302223646-3
+    id: 1735467575150-3
     author: ANH KIET (generated)
     changes:
     - addForeignKeyConstraint:
@@ -61,4 +73,7 @@ databaseChangeLog:
         referencedColumnNames: id
         referencedTableName: tasks
         validate: true
-
+    rollback:
+        - dropForeignKeyConstraint:
+              baseTableName: task_requirements
+              constraintName: FKimgbvsrib8qwlb2pjcn8ujg3r

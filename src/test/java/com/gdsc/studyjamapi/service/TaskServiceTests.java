@@ -14,7 +14,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 
 
-import java.sql.Timestamp;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.UUID;
 
@@ -37,7 +37,7 @@ public class TaskServiceTests {
                         .title("Task Title")
                         .description("Task Description")
                         .requirement(List.of("Requirement 1", "Requirement 2", "Requirement 3"))
-                        .deadline(new Timestamp(System.currentTimeMillis()))
+                        .deadline(LocalDateTime.now())
                         .eventId("123")
                         .build();
 
@@ -80,7 +80,7 @@ public class TaskServiceTests {
                         .title("Task Title")
                         .description("Task Description")
                         .requirement(List.of("Requirement 1", "Requirement 2", "Requirement 3"))
-                        .deadline(new Timestamp(System.currentTimeMillis()))
+                        .deadline(LocalDateTime.now())
                         .eventId("456")
                         .build();
         when(eventService.doesEventExist(request.getEventId())).thenReturn(false);

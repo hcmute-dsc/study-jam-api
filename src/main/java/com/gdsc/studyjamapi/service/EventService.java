@@ -6,7 +6,8 @@ import org.springframework.stereotype.Service;
 @Service
 @RequiredArgsConstructor
 public class EventService {
-    public boolean doesEventExist(String eventId){
+    //Todo: This method needs to be implemented later
+    public boolean doesEventExist(String eventId) {
         return "123".equals(eventId);
     }
 }
