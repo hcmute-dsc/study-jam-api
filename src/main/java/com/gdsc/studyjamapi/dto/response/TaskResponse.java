@@ -7,15 +7,17 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
 @Data
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
 public class TaskResponse {
-    private UUID id;
-    private String title;
-    private List<String> requirement;
-    private String description;
-    private LocalDateTime deadline;
-    private String eventId;
+  private UUID id;
+  private String title;
+  private List<String> requirement;
+  private String description;
+  private LocalDateTime startTime;
+  private LocalDateTime endTime;
+  private String eventId;
 }

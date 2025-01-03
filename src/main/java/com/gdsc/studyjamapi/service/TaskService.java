@@ -17,21 +17,23 @@ import org.springframework.stereotype.Service;
 @Service
 @RequiredArgsConstructor
 public class TaskService {
-    private final TaskRepository taskRepository;
-    private final EventService eventService;
-    public TaskResponse createTask(CreateTaskRequest request) {
-        if (!this.eventService.doesEventExist(request.getEventId())) {
-            throw new RemoteEntityDoesNotExist(String.format(NOT_FOUND_MESSAGE_TEMPLATE, "Event"));
-        }
-        Task newTaskRequest =
-                Task.builder()
-                        .title(request.getTitle())
-                        .description(request.getDescription())
-                        .requirement(request.getRequirement())
-                        .deadline(request.getDeadline())
-                        .eventId(request.getEventId())
-                        .build();
-        Task newTask = taskRepository.save(newTaskRequest);
-        return TaskMapper.INSTANCE.taskToTaskResponse(newTask);
+  private final TaskRepository taskRepository;
+  private final EventService eventService;
+
+  public TaskResponse createTask(CreateTaskRequest request) {
+    if (!this.eventService.doesEventExist(request.getEventId())) {
+      throw new RemoteEntityDoesNotExist(String.format(NOT_FOUND_MESSAGE_TEMPLATE, "Event"));
     }
+    Task newTaskRequest =
+        Task.builder()
+            .title(request.getTitle())
+            .description(request.getDescription())
+            .requirement(request.getRequirement())
+            .startTime(request.getStartTime())
+            .endTime(request.getEndTime())
+            .eventId(request.getEventId())
+            .build();
+    Task newTask = taskRepository.save(newTaskRequest);
+    return TaskMapper.INSTANCE.taskToTaskResponse(newTask);
+  }
 }
