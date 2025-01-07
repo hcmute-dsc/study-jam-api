@@ -13,20 +13,20 @@ public class EventServiceTests {
     private EventService eventService;
 
     @Test
-    void doesEventExist_ValidId_ReturnsTrue() {
+    void doesEventExist_validId_returnsTrue() {
         String request_event_id = "123";
 
         boolean result = eventService.doesEventExist(request_event_id);
 
-        assertTrue(result, "The event with ID '123' should exist.");
+        assertTrue(result, "The event with ID" +request_event_id + " exists.");
     }
 
     @Test
-    void doesEventExist_InValidId_ReturnsTrue() {
+    void doesEventExist_inValidId_returnsFalse() {
         String request_event_id = "456";
 
         boolean result = eventService.doesEventExist(request_event_id);
 
-        assertFalse(result, "The event with ID '456' should exist.");
+        assertFalse(result, "The event with ID " + request_event_id + " doesn't exist.");
     }
 }

@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 
-@Service
 public class ValidTimeRangeValidator
     implements ConstraintValidator<ValidTimeRange, CreateTaskRequest> {
   @Override
@@ -18,8 +17,7 @@ public class ValidTimeRangeValidator
   @Override
   public boolean isValid(CreateTaskRequest task, ConstraintValidatorContext context) {
     boolean isValid = true;
-    if (task.getStartTime().isBefore(LocalDateTime.now())
-        || task.getStartTime().isEqual(LocalDateTime.now())) {
+    if (!task.getStartTime().isAfter(LocalDateTime.now())) {
       context
           .buildConstraintViolationWithTemplate("Start time is invalid")
           .addPropertyNode("startTime")
@@ -27,8 +25,7 @@ public class ValidTimeRangeValidator
           .disableDefaultConstraintViolation();
       isValid = false;
     }
-    if (task.getStartTime().isAfter(task.getEndTime())
-        || task.getStartTime().isEqual(task.getEndTime())) {
+    if (!task.getStartTime().isAfter(task.getEndTime())) {
       context
           .buildConstraintViolationWithTemplate("Start time should be before end time")
           .addPropertyNode("endTime")

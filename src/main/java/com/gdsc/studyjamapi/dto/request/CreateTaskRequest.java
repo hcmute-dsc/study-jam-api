@@ -30,10 +30,10 @@ public class CreateTaskRequest {
   @NotEmpty(message = REQUIRED_REQUIREMENT)
   private List<String> requirement;
 
-  @NotNull(message = REQUIRED_TIME)
+  @NotNull(message = REQUIRED_START_TIME)
   private LocalDateTime startTime;
 
-  @NotNull(message = REQUIRED_TIME)
+  @NotNull(message = REQUIRED_END_TIME)
   private LocalDateTime endTime;
 
   @NotBlank(message = REQUIRED_EVENT_ID)

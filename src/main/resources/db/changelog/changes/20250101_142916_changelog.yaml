@@ -45,5 +45,5 @@ databaseChangeLog:
                   constraints:
                     nullable: true
                   name: deadline
-                  type: timestamp(6)
+                  type: TIMESTAMP(6) WITHOUT TIME ZONE
             tableName: tasks

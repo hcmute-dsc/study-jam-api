@@ -22,7 +22,8 @@ public class Constants {
     public static final String REQUIRED_TITLE = "The title is required.";
     public static final String REQUIRED_DESCRIPTION = "The task description is required.";
     public static final String REQUIRED_REQUIREMENT = "The task requirements are required.";
-    public static final String REQUIRED_TIME = "The task time is required.";
+    public static final String REQUIRED_START_TIME = "The task start time is required.";
+    public static final String REQUIRED_END_TIME = "The task end time is required.";
     public static final String REQUIRED_EVENT_ID = "The event ID is required.";
 
   }
