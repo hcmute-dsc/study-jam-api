@@ -9,24 +9,23 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @SpringBootTest
 public class EventServiceTests {
-    @Autowired
-    private EventService eventService;
+  @Autowired private EventService eventService;
 
-    @Test
-    void doesEventExist_validId_returnsTrue() {
-        String request_event_id = "123";
+  @Test
+  void doesEventExist_validId_returnsTrue() {
+    String requestEventId = "123";
 
-        boolean result = eventService.doesEventExist(request_event_id);
+    boolean result = eventService.doesEventExist(requestEventId);
 
-        assertTrue(result, "The event with ID" +request_event_id + " exists.");
-    }
+    assertTrue(result, "The event with ID " + requestEventId + " exists.");
+  }
 
-    @Test
-    void doesEventExist_inValidId_returnsFalse() {
-        String request_event_id = "456";
+  @Test
+  void doesEventExist_inValidId_returnsFalse() {
+    String requestEventId = "456";
 
-        boolean result = eventService.doesEventExist(request_event_id);
+    boolean result = eventService.doesEventExist(requestEventId);
 
-        assertFalse(result, "The event with ID " + request_event_id + " doesn't exist.");
-    }
+    assertFalse(result, "The event with ID " + requestEventId + " doesn't exist.");
+  }
 }
