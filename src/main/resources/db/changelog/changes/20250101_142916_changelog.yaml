@@ -1,0 +1,49 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1735716582738-1
+      author: ANH KIET (generated)
+      changes:
+        - addColumn:
+            columns:
+              - column:
+                  constraints:
+                    nullable: false
+                  name: end_time
+                  type: timestamp(6)
+            tableName: tasks
+      rollback:
+        - dropColumn:
+            columnName: end_time
+            tableName: tasks
+  - changeSet:
+      id: 1735716582738-2
+      author: ANH KIET (generated)
+      changes:
+        - addColumn:
+            columns:
+              - column:
+                  constraints:
+                    nullable: false
+                  name: start_time
+                  type: timestamp(6)
+            tableName: tasks
+      rollback:
+        - dropColumn:
+            columnName: start_time
+            tableName: tasks
+  - changeSet:
+      id: 1735716582738-3
+      author: ANH KIET (generated)
+      changes:
+        - dropColumn:
+            columnName: deadline
+            tableName: tasks
+      rollback:
+        - addColumn:
+            columns:
+              - column:
+                  constraints:
+                    nullable: true
+                  name: deadline
+                  type: TIMESTAMP(6) WITHOUT TIME ZONE
+            tableName: tasks

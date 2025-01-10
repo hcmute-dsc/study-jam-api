@@ -3,3 +3,8 @@ databaseChangeLog:
       file: db/changelog/changes/20240721_213612_changelog.yaml
   - include:
       file: db/changelog/changes/20240727_112012_changelog.yaml
+  - include:
+      file: db/changelog/changes/20241229_171904_changelog.yaml
+  - include:
+      file: db/changelog/changes/20250101_142916_changelog.yaml
+

@@ -40,6 +40,7 @@ public class ControllerExceptionHandler extends ResponseEntityExceptionHandler {
   @ResponseStatus(HttpStatus.BAD_REQUEST)
   @ExceptionHandler({
     EmailAlreadyExistsException.class,
+    RemoteEntityDoesNotExist.class
   })
   public ResponseEntity<ErrorResponse> badRequestException(Exception exception) {
     return new ResponseEntity<>(new ErrorResponse(exception.getMessage()), HttpStatus.BAD_REQUEST);

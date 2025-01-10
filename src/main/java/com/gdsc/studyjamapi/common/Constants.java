@@ -19,5 +19,12 @@ public class Constants {
         "The length of the password must be at least 8 characters.";
     public static final String EMAIL_ALREADY_EXISTS = "This email already exists.";
     public static final String NOT_FOUND_MESSAGE_TEMPLATE = "%s not found";
+    public static final String REQUIRED_TITLE = "The title is required.";
+    public static final String REQUIRED_DESCRIPTION = "The task description is required.";
+    public static final String REQUIRED_REQUIREMENT = "The task requirements are required.";
+    public static final String REQUIRED_START_TIME = "The task start time is required.";
+    public static final String REQUIRED_END_TIME = "The task end time is required.";
+    public static final String REQUIRED_EVENT_ID = "The event ID is required.";
+
   }
 }
