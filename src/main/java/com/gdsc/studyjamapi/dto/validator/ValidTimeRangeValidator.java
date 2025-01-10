@@ -17,7 +17,7 @@ public class ValidTimeRangeValidator
   @Override
   public boolean isValid(CreateTaskRequest task, ConstraintValidatorContext context) {
     boolean isValid = true;
-    if (task.getStartTime().isAfter(LocalDateTime.now())) {
+    if (task.getStartTime().isBefore(LocalDateTime.now())) {
       context
           .buildConstraintViolationWithTemplate("Start time is invalid")
           .addPropertyNode("startTime")
@@ -25,7 +25,7 @@ public class ValidTimeRangeValidator
           .disableDefaultConstraintViolation();
       isValid = false;
     }
-    if (task.getStartTime().isAfter(task.getEndTime())) {
+    if (!task.getEndTime().isAfter(task.getStartTime())) {
       context
           .buildConstraintViolationWithTemplate("Start time should be before end time")
           .addPropertyNode("endTime")
