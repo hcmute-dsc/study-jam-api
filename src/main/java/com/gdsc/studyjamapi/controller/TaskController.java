@@ -2,8 +2,6 @@ package com.gdsc.studyjamapi.controller;
 
 import java.net.URI;
 
-import io.swagger.v3.oas.annotations.parameters.RequestBody;
-import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponentsBuilder;
@@ -18,13 +16,13 @@ import lombok.RequiredArgsConstructor;
 @RestController
 @RequiredArgsConstructor
 public class TaskController implements TaskApi {
-    private final TaskService taskService;
+  private final TaskService taskService;
 
-    @Override
-    public ResponseEntity<TaskResponse> createTask(
-            @Valid CreateTaskRequest request, UriComponentsBuilder ucb) {
-        TaskResponse taskResponse = taskService.createTask(request);
-        URI locationOfNewTask = ucb.path("/tasks/{id}").buildAndExpand(taskResponse.getId()).toUri();
-        return ResponseEntity.created(locationOfNewTask).build();
-    }
+  @Override
+  public ResponseEntity<TaskResponse> createTask(
+      CreateTaskRequest request, UriComponentsBuilder ucb) {
+    TaskResponse taskResponse = taskService.createTask(request);
+    URI locationOfNewTask = ucb.path("/tasks/{id}").buildAndExpand(taskResponse.getId()).toUri();
+    return ResponseEntity.created(locationOfNewTask).build();
+  }
 }
