@@ -22,10 +22,8 @@ import static org.springframework.security.web.util.matcher.AntPathRequestMatche
 public class SecurityConfig {
   private final AuthenticationProvider authenticationProvider;
   private final JwtAuthenticationFilter jwtAuthenticationFilter;
-  //TODO: Please remove the path /tasks/** in the whitelist after full integration
-  private static final String[] AUTH_WHITELIST = {
-    "/api-docs/**", "/auth/**","/tasks/**"
-  };
+  // TODO: Please remove the path /tasks/** in the whitelist after full integration
+  private static final String[] AUTH_WHITELIST = {"/api-docs/**", "/auth/**", "/tasks"};
 
   @Bean
   public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
